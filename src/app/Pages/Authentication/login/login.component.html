@@ -1,0 +1,89 @@
+<section class="h-100 gradient-form" style="background-color: #eee">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-6" style="max-width: 500px">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div>
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img
+                    src="../../../../assets/logo/company_logo.png"
+                    style="width: 200px; height: 100px"
+                    alt="logo"
+                  />
+                </div>
+
+                <form
+                  class="w-100 pt-4"
+                  [formGroup]="Platorm_User_Login"
+                  (ngSubmit)="send()"
+                >
+                  <mat-form-field
+                    class="ex-form pt-4 w-100"
+                    appearance="outline"
+                  >
+                    <mat-label>Username</mat-label>
+                    <input
+                      matInput
+                      required
+                      formControlName="username"
+                      id="username"
+                    />
+                    <mat-error
+                      *ngIf="
+                        Platorm_User_Login.get('username')?.hasError('required')
+                      "
+                      >We need an username to log you in</mat-error
+                    >
+                  </mat-form-field>
+                  <mat-form-field
+                    class="ex-form pt-2 w-100"
+                    appearance="outline"
+                  >
+                    <mat-label>Password</mat-label>
+                    <input
+                      matInput
+                      [type]="inputType"
+                      formControlName="password"
+                      id="password"
+                      required
+                      minlength="6"
+                    />
+
+                    <mat-error
+                      *ngIf="
+                        Platorm_User_Login.get('password')?.hasError('required')
+                      "
+                      >We need a password to log you in
+                    </mat-error>
+                    <mat-error
+                      *ngIf="
+                        Platorm_User_Login.get('password')?.hasError(
+                          'minlength'
+                        )
+                      "
+                      >The password should be minimum 6 characters</mat-error
+                    >
+                  </mat-form-field>
+
+                  <div class="text-center pt-3 mb-5 pb-1">
+                    <button
+                      mat-raised-button
+                      class="w-100"
+                      color="primary"
+                      [disabled]="Platorm_User_Login.invalid"
+                      style="font-size: 20px"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
